@@ -12,5 +12,23 @@ question was
 I completely agree with the author that this question is absolutely
 useless for programming interviews. But in general, I really like such
 questions. The first solution which came to my head was somehow to
-mark the visited nodes during traversing the list. And when we visit a
-visited node we report that a cycle has been detected.
+mark the visited nodes during traversing the list (within the nodes or
+in a separate data structure). And when we visit an already visited
+node we report that the list has a cycle. I continued to read further
+and Dr. Hilton mentioned so called tortoise-and-hare algorithm. It
+looked like a well-known classical algorithm but, for my shame, I had
+heard nothing about it.
+
+The algorithm is pretty simple.
+
+> You have two pointers at the head of your linked list, one traverses
+> the list two nodes at a time, and one traverses the list one node at
+> a time; if ever the pointers point to the same node, you have a
+> cycle somewhere.
+
+After reading this sentence I quickly implemented the algorithm in
+Haskell to check if it really works.
+
+# Implementation of the Algorithm #
+
+...
