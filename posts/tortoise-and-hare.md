@@ -26,9 +26,16 @@ The algorithm is pretty simple.
 > a time; if ever the pointers point to the same node, you have a
 > cycle somewhere.
 
-After reading this sentence I quickly implemented the algorithm in
+After reading this sentence I quickly implemented the algorithm on
 Haskell to check if it really works.
 
 # Implementation of the Algorithm #
+
+For simplicity I implemented a linked list as a 1-based array of
+integers. Each element of the array is a node of the linked list. And
+each element contains just an index which points to the next element
+of the list. 0 index determines the end of the list.
+
+    type LinkedList = Array Int Int
 
 ...
