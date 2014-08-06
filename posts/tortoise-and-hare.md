@@ -29,13 +29,40 @@ The algorithm is pretty simple.
 After reading this sentence I quickly implemented the algorithm on
 Haskell to check if it really works.
 
-# Implementation of the Algorithm #
+# My Implementation of the Algorithm #
 
 For simplicity I implemented a linked list as a 1-based array of
 integers. Each element of the array is a node of the linked list. And
 each element contains just an index which points to the next element
-of the list. 0 index determines the end of the list.
+of the list. Index 0 determines the end of the list.
 
     type LinkedList = Array Int Int
 
-...
+Let's define an operation for getting the next element in the list:
+
+    next :: LinkedList -> Int -> Int
+    next xs 0 = 0                   -- 0 is the end of the list. Not going anywhere.
+    next xs i = xs ! i              -- Taking an index of the next element.
+
+In the algorithm we have two pointers. One traverses the list two
+nodes at a time, and one traverses the list one node at a time. Let's
+define an operation for one step of the algorithm:
+
+    nextTH :: LinkedList -> (Int, Int) -> (Int, Int)
+    nextTH xs (t, h) = (next xs t, next xs $ next xs h)
+
+And the last thing we need is to somehow determine if the algorithm
+should stop. It should stop when the pointers to the same node:
+
+    stop :: (Int, Int) -> Bool
+    stop (t, h) = t == h
+
+Alright, `nextTH` and `stop` is enough to implement cycle detection
+algorithm. Since it involves a lot of function applications and I hate
+Haskell's `($)` operator, I've defined this
+
+    --- F#-like forward pipe operator
+    (|>) :: a -> (a -> b) -> b
+    x |> f = f x
+
+F# programmers will understand me. :)
