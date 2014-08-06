@@ -66,3 +66,27 @@ Haskell's `($)` operator, I've defined this
     x |> f = f x
 
 F# programmers will understand me. :)
+
+    containsCycle :: LinkedList -> Bool
+    containsCycle xs =  (1, 1)      -- Initial state of the pointers.
+    
+                     -- Traversing the list generating all possible states
+                     -- of the pointers.
+                     |> iterate (nextTH xs)
+    
+                     -- Since at the begining the pointers point to the
+                     -- same node, we skip the first state.
+                     |> tail
+    
+                     -- Drop all states until we find a stop state.
+                     |> dropWhile (not . stop)
+    
+                     -- Take this state.
+                     |> head
+    
+                     -- Take any pointer (doesn't matter which one, at the
+                     -- stop state they are equal).
+                     |> fst
+    
+                     -- If it is not 0 we found a cycle.
+                     |> (/= 0)
