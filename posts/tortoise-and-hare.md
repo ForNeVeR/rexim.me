@@ -65,7 +65,8 @@ Haskell's `($)` operator, I've defined this
     (|>) :: a -> (a -> b) -> b
     x |> f = f x
 
-F# programmers will understand me. :)
+F# programmers will understand me. :) Here is my implementation of the
+algorithm:
 
     containsCycle :: LinkedList -> Bool
     containsCycle xs =  (1, 1)      -- Initial state of the pointers.
@@ -90,3 +91,4 @@ F# programmers will understand me. :)
     
                      -- If it is not 0 we found a cycle.
                      |> (/= 0)
+
