@@ -92,3 +92,10 @@ algorithm:
                      -- If it is not 0 we found a cycle.
                      |> (/= 0)
 
+Here is the
+[complete source code](https://gist.github.com/rexim/5f623b0c183aa0503079). And
+it seems to work. But why does it work?
+
+# Why does it work? #
+
+
