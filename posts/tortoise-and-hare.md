@@ -98,4 +98,13 @@ it seems to work. But why does it work?
 
 # Why does it work? #
 
+Here I've tried to prove the correctness of the algorithm. I'm not a
+good mathematician or computer scientist, so I don't the Rigth Way to
+do such things. But this proof is rather believable for me.
 
+This is how a linked list with a cycle would look like:
+
+<!-- Picture with a looped linked list -->
+
+Eventually, the tortoise and hare pointers will start to walk only
+with the loop.
